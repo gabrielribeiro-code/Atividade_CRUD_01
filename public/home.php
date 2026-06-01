@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
 
 </p>
 
-<h2> Cadastrar novo Usuário </h2>
+<h2> Cadastrar novo Usuário </h2> 
 
 <form method="POST">
 
@@ -73,8 +73,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
 
     </form>
 
+<!-- 
+    
+Está parte do código é uma implementação simples em html para conseguir cadastrar um novo usuário.
+
+-->
+
 <?php
  include("../public/component/table.php");
+
+ //Esta parte do code é so para adicionar uma tabela para visualizar todas as pessoas cadastradas até então.
 ?>
 
  
