@@ -1,4 +1,3 @@
-
 <?php
 
 include("infra/db/connect.php");
@@ -8,12 +7,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $usuario = $_POST["usuario"];
     $senha = $_POST["senha"];
 
-    $sql = "SELECT * FROM usuario
+    $sql = "SELECT * FROM usuario 
     WHERE usuario = '$usuario' 
     AND senha = '$senha'";
 
     $resultado = $conn -> query($sql);
-
 
     if($resultado -> num_rows > 0){
         $_SESSION["usuario"] = $usuario;
@@ -22,16 +20,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }else{
         $erro = "Usuário ou senha inválidos.";
     }
-
 }
 
-
-
 ?>
-
-
-
-
 
 <html lang="en">
 <head>
@@ -40,10 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Login com PHP</title>
 </head>
 <body>
-    <h2>Login com PHP</h2>
-
-    <form method="POST">
-
+     <?php
+    include("public/component/table.php");
+    ?>
+    <h2>Login com PHP</h2><form method="POST">
         <label for="usuario">Usuario:</label>
         <input type="text" name="usuario">
         <br>
@@ -52,17 +43,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <input type="password" name="senha">
         <br>
         <br>
+        <?php
+
+            if(isset($erro)){
+                echo $erro;
+            }
+        ?>
         <button type="submit">Entrar</button>
-
     </form>
+    
 
-    <?php
 
-    if(isset($erro)){
-        echo $erro;
-    }
-
-    ?>
     
 </body>
 </html>
