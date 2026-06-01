@@ -1,6 +1,7 @@
 <?php
 
 include("infra/db/connect.php");
+//Aqui realizamos a conexão do php com o file connect.php assim não precisando startar o php em todas as páginas.
 
 if(!isset($_SESSION["usuario"])){
     header("Location:  ../index.php");
@@ -13,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $usuario = $_POST["usuario"];
     $senha = $_POST["senha"];
 
-    $sql = "INSERT INTO users(username, password) VALUES ('$usuario','$senha')";
+    $sql = "INSERT INTO usuario(usuario, senha) VALUES ('$usuario','$senha')";
     
     if($conn -> query($sql) === TRUE){
 
