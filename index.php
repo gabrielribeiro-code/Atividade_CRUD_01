@@ -1,6 +1,7 @@
 <?php
 
 include("infra/db/connect.php");
+//Como explicado nas outras páginas essa parte serve para utilizar do connect e não precisar startar sempre o php, utilizando a página connect.
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -22,7 +23,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 
+//Nesta parte toda do código de php nós estamos utilizando os comandos do banco de dados como o select para buscar e encontrar o usuário que criamos no banco e se achar,
+//ira funcionar o login e se não funcionar irá aparecer uma mensagem de erro.
+
 ?>
+
+
 
 <html lang="en">
 <head>
@@ -48,6 +54,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(isset($erro)){
                 echo $erro;
             }
+
+            //Esta parte do código serve apenas para criar o pequena tela de formulário, a pequena tela de login colocando o espaço para adicionar o usuario, a senha ew o botõa para enviar.
         ?>
         <button type="submit">Entrar</button>
     </form>
