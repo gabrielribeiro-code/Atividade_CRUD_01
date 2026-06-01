@@ -5,7 +5,7 @@ include("infra/db/connect.php");
 
 if(!isset($_SESSION["usuario"])){
     header("Location:  ../index.php");
-    exit();
+    exit(); //Está pequena parte do código serve para 
 }
 
 
