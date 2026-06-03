@@ -1,5 +1,7 @@
 <?php
 
+
+
 include("infra/db/connect.php");
 //Como explicado nas outras páginas essa parte serve para utilizar do connect e não precisar startar sempre o php, utilizando a página connect.
 
@@ -40,7 +42,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      <?php
     include("public/component/table.php");
     ?>
-    <h2>Login com PHP</h2><form method="POST">
+
+    <h2>Login com PHP</h2>
+
+    <form method="POST">
         <label for="usuario">Usuario:</label>
         <input type="text" name="usuario">
         <br>
