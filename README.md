@@ -56,4 +56,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
 
  Como eu expliquei serve para verificar uma ação e depois procurar esse usuário e irá excluir como quem está utilizando o site preferir e na parte final do código serve para se der certo a exclusão mostra um alert falando que deu certo a exclusão.
 
+ # Editar Dados
+
+ Na implementação de edição dados encontrei dificuldade para conseguir fazer essa função pois ainda desconheço muito de php e na internet não consegui achar informações que me auxiliaram tanto. Mas consegui fazer os primeiros passos e eu entendo a lógica que eu tenho que fazer só que na hora de implementar no php ainda não consegui entender como fazer.
+
 
