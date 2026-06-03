@@ -1,6 +1,6 @@
 <?php
 
-include("infra/db/connect.php");
+include("../infra/db/connect.php");
 //Aqui realizamos a conexão do php com o file connect.php assim não precisando startar o php em todas as páginas.
 
 if(!isset($_SESSION["usuario"])){
@@ -10,6 +10,8 @@ if(!isset($_SESSION["usuario"])){
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se o usuario mandou algo, enviou o formulário ou algum dado.
+
+    if(isset($_POST['acao']) && $_POST['acao'] == 'cadastrar') {
 
     $usuario = $_POST["usuario"];
     $senha = $_POST["senha"];
@@ -27,9 +29,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
 
     }
 
+    }
+
+
 //Esta parte serve para conectar com o banco de dados e colocar em nossa tela um alert caso o funcionamento do login seja realizado com sucesso ou não.
 
 }
+?>
+
+<?php
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se o usuario mandou algo, enviou o formulário ou algum dado.
+
+     if(isset($_POST['acao']) && $_POST['acao'] == 'excluir') { // serve para clicar no botao excluir e funcionar e nao fazer a ação tanto de excluir e adicionar
+        $usuario_ex = $_POST["usuario_ex"]; // pega o usuário selecionado para excluir.
+
+    $sql = "DELETE FROM usuario WHERE usuario = '$usuario_ex' ";
+
+    if($conn -> query($sql) === TRUE){ 
+
+    echo "<script> alert('Usuario Excluido com sucesso')</script>";
+
+
+    }else{
+
+    echo "<script> alert('Usuario não foi excluido')</script>";
+
+    }
+     }
+}
+
 ?>
 
 
@@ -69,15 +98,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
         <input type="password" name="senha">
         <br>
         <br>
-        <button type="submit">Entrar</button>
-
+        <button type="submit" name="acao" value="cadastrar">Entrar</button> 
+ 
+        <!-- Essa parte do código serve principalmente para funcionar a parte de adicionar o usuário e colocamos um name e um value para funcionar e não conflitar com o outro botao que é de excluir. -->
     </form>
 
+<form method="POST">
+
+    <h2> Excluir Usuários </h2> 
+
+    <label for="usuario_ex">Quem você quer excluir?</label>
+    <input type="text" name="usuario_ex">
+
+    <button type="submit" name="acao" value="excluir">Excluir</button> 
+
+    <!-- Esta parte do código serve para não conflitar os botões do entrar e excluir, e este é uma parte visual né do funcionamento em que incluimos um input para digitar qual, queremos excluir. -->
+
+</form>
 <!-- 
     
 Está parte do código é uma implementação simples em html para conseguir cadastrar um novo usuário.
 
 -->
+
+
+
+
 
 <?php
  include("../public/component/table.php");
