@@ -8,6 +8,7 @@ if(!isset($_SESSION["usuario"])){
     exit(); //Está pequena parte do código serve para se não existir um usuário autenticado ele não consegue entrar nas próximas páginas do site.
 }
 
+//ADICIONAR
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se o usuario mandou algo, enviou o formulário ou algum dado.
 
@@ -37,6 +38,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
 }
 ?>
 
+
+<!-- EXCLUIR -->
+
 <?php
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se o usuario mandou algo, enviou o formulário ou algum dado.
@@ -60,6 +64,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
 }
 
 ?>
+
+<!-- EDITAR -->
+
+<?php
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){ 
+
+     if(isset($_POST['acao']) && $_POST['acao'] == 'editar') { 
+        $usuario_ex = $_POST["usuario_ed"]; 
+
+    $sql = " UPDATE usuario set usuario = ? senha = ? WHERE id = ?";
+
+
+
+    
+
+    if($conn -> query($sql) === TRUE){ 
+
+    echo "<script> alert('Usuario Editado com sucesso')</script>";
+
+
+    }else{
+
+    echo "<script> alert('Usuario não foi editado')</script>";
+
+    }
+     }
+}
+
+?>
+
+
 
 
 <html lang="en">
@@ -103,6 +139,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
         <!-- Essa parte do código serve principalmente para funcionar a parte de adicionar o usuário e colocamos um name e um value para funcionar e não conflitar com o outro botao que é de excluir. -->
     </form>
 
+    <!-- 
+    
+Está parte do código é uma implementação simples em html para conseguir cadastrar um novo usuário.
+
+-->
+
 <form method="POST">
 
     <h2> Excluir Usuários </h2> 
@@ -115,11 +157,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //Está parte serve para verifiicar se
     <!-- Esta parte do código serve para não conflitar os botões do entrar e excluir, e este é uma parte visual né do funcionamento em que incluimos um input para digitar qual, queremos excluir. -->
 
 </form>
-<!-- 
-    
-Está parte do código é uma implementação simples em html para conseguir cadastrar um novo usuário.
 
--->
+<form method="POST">
+
+    <h2> Editar Usuários </h2> 
+
+    <label for="usuario_ed">Quem você quer editar?</label>
+    <input type="text" name="usuario_ed">
+
+    <button type="submit" name="acao" value="excluir">Editar</button> 
+
 
 
 
